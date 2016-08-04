@@ -42,16 +42,17 @@ public class App {
 // Set wait as Webdriverwait instance, with 40 seconds timeout
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 
+// Wait for "Search page results"
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("search-page-results")));
-
+		
+// Click on second search item
 		driver.findElement(By.xpath("//*[@id='search-page-results']/ol/li[2]/h3/a")).click();
 		
+// Wait for title "Your COSUGI Compendium: Everything You Need to Know About Indianapolis, part 2 The Dish on Dining"
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("page-title"),"Your COSUGI Compendium: Everything You Need to Know About Indianapolis, part 2 The Dish on Dining"));
-// wait five seconds to load the search page
-//		Thread.sleep(5000);
 
-		
-// Check if the url match with "http://www.sirsidynix.com/blog/2016/05/09/your-cosugi-compendium-everything-you-need-to-know-about"
+// Check if the url match with "http://www.sirsidynix.com/blog/2016/05/09/your-cosugi-compendium-everything-you-need-to-know-about" 
+// and print the result in log
 		if (driver.getCurrentUrl().equalsIgnoreCase("http://www.sirsidynix.com/blog/2016/05/09/your-cosugi-compendium-everything-you-need-to-know-about")){
 			System.out.println("Requested URL is the same as the one found");
 		} else {
